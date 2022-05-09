@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Scopes\UserisActiveScope;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use \Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -44,8 +47,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    protected static function booted()
+    {
+        static::addGlobalScope(new UserisActiveScope);
+    }
+    public function scopeIsAdmin($query)
+    {
+        $isAdmin = 1;
+        $query->where('isAdmin', $isAdmin);
+    }
     public function office()
     {
         return $this->belongsTo(Office::class);
+    }
+
+    protected function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->last_name . ' ' . $this->first_name
+        );
+    }
+    protected function userName(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => Str::slug($value, '-')
+        );
     }
 }

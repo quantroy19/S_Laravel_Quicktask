@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test', [Controller::class, 'getFullName']);
+Route::get('/set-username', [Controller::class, 'setUserName']);
+Route::get('/active', [Controller::class, 'getUserisActive']);
+Route::get('/isAdmin', [Controller::class, 'getUserisAdmin']);

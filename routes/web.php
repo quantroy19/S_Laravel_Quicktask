@@ -30,3 +30,9 @@ Route::name('office.')->group(function () {
     Route::put('offices/{office}', [OfficeControlle::class, 'update'])->name('update');
     Route::delete('offices/{office}', [OfficeControlle::class, 'destroy'])->name('destroy');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';

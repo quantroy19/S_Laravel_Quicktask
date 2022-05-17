@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LanguageControlle;
 use App\Http\Controllers\OfficeControlle;
 use App\Http\Controllers\UserControlle;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,9 @@ Route::name('office.')->group(function () {
     Route::put('offices/{office}', [OfficeControlle::class, 'update'])->name('update');
     Route::delete('offices/{office}', [OfficeControlle::class, 'destroy'])->name('destroy');
 });
+
+Route::get('change-language/{language}', [LanguageControlle::class, 'changeLanguage'])->middleware('locale')
+    ->name('change-language');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

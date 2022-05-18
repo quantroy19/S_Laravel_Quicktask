@@ -1,0 +1,13 @@
+{
+    "name": "S_Laravel_Quicktask",
+    "description": "",
+    "main": "",
+    "authors": ["Quan Troy 19 <doquan285lg@gmail.com>"],
+    "license": "MIT",
+    "homepage": "https://github.com/quantroy19/S_Laravel_Quicktask",
+    "private": true,
+    "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
+    "dependencies": {
+        "light-bootstrap-dashboard": "creativetimofficial/light-bootstrap-dashboard"
+    }
+}

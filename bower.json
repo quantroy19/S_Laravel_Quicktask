@@ -8,6 +8,8 @@
     "private": true,
     "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
     "dependencies": {
-        "light-bootstrap-dashboard": "creativetimofficial/light-bootstrap-dashboard"
+        "light-bootstrap-dashboard": "creativetimofficial/light-bootstrap-dashboard",
+        "font-awesome.min": "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css",
+        "css": "https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
     }
 }

@@ -36,7 +36,10 @@ Route::get('change-language/{language}', [LanguageControlle::class, 'changeLangu
     ->name('change-language');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('user.index');
+})->middleware(['auth'])->name('user.index');
+Route::get('/user-detail', function () {
+    return view('user.list_user');
+})->middleware(['auth'])->name('user.list_user');
 
 require __DIR__ . '/auth.php';

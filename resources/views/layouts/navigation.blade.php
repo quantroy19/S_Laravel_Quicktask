@@ -15,7 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <a class="mt-4" href="{{ route('users.index') }}">{{ __('User') }}</a>
+                    @can('view', App\Models\User::class)
+                        <a class="mt-4" href="{{ route('users.index') }}">{{ __('User') }}</a>
+                    @endcan
                 </div>
             </div>
 

@@ -5,16 +5,16 @@
         </a>
     </div>
     <ul class="nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ route('user.index') }}">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('users.index') }}">
                 <i class="nc-icon nc-icon nc-paper-2"></i>
                 <p>{{ __('User') }}</p>
             </a>
         </li>
         <li>
-            <a class="nav-link" href="./user.html">
+            <a class="nav-link" href="{{ route('offices.index') }}">
                 <i class="nc-icon nc-bell-55"></i>
-                <p>{{ __('Second example') }}</p>
+                <p>{{ __('Office') }}</p>
             </a>
         </li>
 

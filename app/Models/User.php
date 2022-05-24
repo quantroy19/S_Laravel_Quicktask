@@ -21,9 +21,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'username',
         'password',
+        'first_name',
+        'last_name',
+        'email',
+        'isActive',
+        'office_id',
     ];
 
     //backlist
@@ -71,6 +75,18 @@ class User extends Authenticatable
     {
         return Attribute::make(
             set: fn ($value) => Str::slug($value, '-')
+        );
+    }
+    protected function showIsAdmin(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => ($this->isAdmin == 1) ? 'yes' : 'no'
+        );
+    }
+    protected function showIsActive(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => ($this->isActive == 1) ? 'yes' : 'no'
         );
     }
 }

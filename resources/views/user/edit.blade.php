@@ -1,6 +1,6 @@
  @extends('layouts.main')
  @section('content')
-     <h3>{{ __('Edit User') }}</h3><br>
+     <h3>{{ __('titles.edit_user') }}</h3><br>
      <form method="POST" action="{{ route('users.update', $id) }}" autocomplete="off">
          @method('PATCH')
          @csrf
@@ -43,7 +43,7 @@
              @enderror
          </div>
          <div class="form-group">
-             <label for="office">{{ __('Office') }}</label>
+             <label for="office">{{ __('titles.office') }}</label>
              <select id="office" name="office_id" class="form-control">
                  @foreach ($offices as $office)
                      <option value="{{ $office->id }}" {{ $office->id == $user->office_id ? 'selected' : '' }}>
@@ -52,20 +52,20 @@
              </select>
          </div>
          <label class="" for="isAdmin">
-             {{ __('Admin') }}
+             {{ __('titles.admin') }}
 
          </label>
          <input class="mr-3" type="checkbox" value="1" id="isAdmin" name="isAdmin"
              {{ $user->isAdmin ? 'checked' : '' }}>
          <label class="" for="isActive">
-             {{ __('Active') }}
+             {{ __('titles.active') }}
          </label>
          <input class="" type="checkbox" value="1" id="isActive" name="isActive"
              {{ $user->isActive ? 'checked' : '' }}>
          <div class="">
-             <button type="button" class="btn btn-sm btn-secondary">{{ __('Close') }}</button>
+             <button type="button" class="btn btn-sm btn-secondary">{{ __('titles.active') }}</button>
              &nbsp;
-             <input type="submit" class="btn btn-sm btn-primary" value="{{ __('Save') }}">
+             <input type="submit" class="btn btn-sm btn-primary" value="{{ __('titles.save') }}">
          </div>
      </form>
  @endsection

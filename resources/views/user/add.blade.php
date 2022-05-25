@@ -1,6 +1,6 @@
  @extends('layouts.main')
  @section('content')
-     <h3>{{ __('Add User') }}</h3><br>
+     <h3>{{ __('titles.add_user') }}</h3><br>
      <form action="{{ route('users.store') }}" method="post" autocomplete="off">
          @csrf
          <div class="form-group">
@@ -39,7 +39,7 @@
              @enderror
          </div>
          <div class="form-group">
-             <label for="office">{{ __('Office') }}</label>
+             <label for="office">{{ __('titles.office') }}</label>
              <select id="office" name="office_id" class="form-control">
                  @foreach ($offices as $office)
                      <option value="{{ $office->id }}">{{ $office->name }}</option>
@@ -47,16 +47,17 @@
              </select>
          </div>
          <label class="" for="isAdmin">
-             {{ __('Admin') }}
+             {{ __('titles.admin') }}
          </label>
          <input class="mr-3" type="checkbox" value="1" id="isAdmin" name="isAdmin">
          <label class="" for="isActive">
-             {{ __('Active') }}
+             {{ __('titles.active') }}
          </label>
          <input class="" type="checkbox" value="1" id="isActive" name="isActive">
          <div class="">
-             <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button> &nbsp;
-             <input type="submit" class="btn btn-primary" value="{{ __('Save') }}">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('titles.close') }}</button>
+             &nbsp;
+             <input type="submit" class="btn btn-primary" value="{{ __('titles.save') }}">
          </div>
      </form>
  @endsection

@@ -1,15 +1,15 @@
 @extends('layouts.main')
 @section('content')
-    <h3>{{ __('List office') }}</h3>
+    <h3>{{ __('titles.list_office') }}</h3>
     <table class="table table-hover">
         <tr>
             <th>{{ __('#') }}</th>
-            <th>{{ __('Office Name') }}</th>
-            <th>{{ __('Created At') }}</th>
-            <th>{{ __('Updated At') }}</th>
+            <th>{{ __('titles.office_name') }}</th>
+            <th>{{ __('titles.created_at') }}</th>
+            <th>{{ __('titles.updated_at') }}</th>
             <th>
                 <a class="btn btn-sm btn-primary" href="{{ route('offices.create') }}">
-                    {{ __('Add office') }}
+                    {{ __('titles.add_office') }}
                 </a>
             </th>
         </tr>
@@ -22,12 +22,12 @@
                     <td>{{ $office->updated_at }}</td>
                     <td class="d-inline-flex">
                         <a href="{{ route('offices.edit', $office->id) }}"
-                            class="btn btn-sm btn-warning">{{ __('Edit') }}</a>
+                            class="btn btn-sm btn-warning">{{ __('titles.edit') }}</a>
                         &nbsp;
                         <form action="{{ route('offices.destroy', $office->id) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">{{ __('Remove') }}</button>
+                            <button type="submit" class="btn btn-sm btn-danger">{{ __('titles.remove') }}</button>
                         </form>
                     </td>
                 </tr>

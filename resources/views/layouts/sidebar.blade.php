@@ -8,13 +8,13 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('users.index') }}">
                 <i class="nc-icon nc-icon nc-paper-2"></i>
-                <p>{{ __('User') }}</p>
+                <p>{{ __('titles.user') }}</p>
             </a>
         </li>
         <li>
             <a class="nav-link" href="{{ route('offices.index') }}">
                 <i class="nc-icon nc-bell-55"></i>
-                <p>{{ __('Office') }}</p>
+                <p>{{ __('titles.office') }}</p>
             </a>
         </li>
 

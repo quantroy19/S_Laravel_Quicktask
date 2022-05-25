@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Office\StoreRequest;
+use App\Http\Requests\Office\UpdateRequest;
 use App\Models\Office;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class OfficeControlle extends Controller
+class OfficeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,9 @@ class OfficeControlle extends Controller
      */
     public function index()
     {
-        //
+        $offices = DB::table('offices')->get();
+
+        return view('office.index', compact('offices'));
     }
 
     /**
@@ -24,7 +29,8 @@ class OfficeControlle extends Controller
      */
     public function create()
     {
-        //
+
+        return view('office.add');
     }
 
     /**
@@ -33,9 +39,15 @@ class OfficeControlle extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        DB::table('offices')->insert([
+            'name' => $request->name,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('offices.index');
     }
 
     /**
@@ -57,7 +69,7 @@ class OfficeControlle extends Controller
      */
     public function edit(Office $office)
     {
-        //
+        return view('office.edit', compact('office'));
     }
 
     /**
@@ -67,9 +79,18 @@ class OfficeControlle extends Controller
      * @param  \App\Models\Office  $office
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Office $office)
+    public function update(UpdateRequest $request, Office $office)
     {
-        //
+        DB::table('offices')
+            ->where('id', $office->id)
+            ->update(
+                [
+                    'name' => $request->name,
+                    'updated_at' => now(),
+                ],
+            );
+
+        return redirect()->route('offices.index');
     }
 
     /**
@@ -80,6 +101,9 @@ class OfficeControlle extends Controller
      */
     public function destroy(Office $office)
     {
-        //
+        DB::table('users')->where('office_id', $office->id)->delete();
+        DB::table('offices')->where('id', $office->id)->delete();
+
+        return redirect()->route('offices.index');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckAdmin
 {
@@ -16,8 +17,13 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
+        try {
+            if (Auth::user()->isAdmin !== 1) {
 
-        if (!$request->isAdmin) {
+                return redirect('home');
+            };
+        } catch (\Throwable $th) {
+
             return redirect('home');
         }
 

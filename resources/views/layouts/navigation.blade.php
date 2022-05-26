@@ -15,7 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <a class="mt-4" href="{{ route('users.index') }}">{{ __('User') }}</a>
+                    @can('view', App\Models\User::class)
+                        <a class="mt-4" href="{{ route('users.index') }}">{{ __('User') }}</a>
+                    @endcan
                 </div>
             </div>
 
@@ -42,7 +44,7 @@
                               <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('titles.log_out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -84,7 +86,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('titles.log_out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

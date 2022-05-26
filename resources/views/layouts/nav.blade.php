@@ -44,7 +44,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#pablo">
-                        <span class="no-icon">{{ __('Log out') }}</span>
+                        <span class="no-icon">{{ __('titles.log_out') }}</span>
                     </a>
                 </li>
             </ul>

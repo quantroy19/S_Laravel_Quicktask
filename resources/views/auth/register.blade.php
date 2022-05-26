@@ -38,6 +38,16 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <!-- Office -->
+            <div class="mt-4 form-group">
+                <x-label for="office" :value="__('Office')"></x-label>
+
+                <select class="w-full" name="office_id" id="office">
+                    @foreach ($offices as $office)
+                        <option value="{{ $office->id }}">{{ $office->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('titles.password')" />
